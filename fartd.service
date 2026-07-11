@@ -1,0 +1,21 @@
+[Unit]
+Description=Farting fart fart
+After=network.target
+
+[Service]
+User=misha
+Group=misha
+
+WorkingDirectory=%h/.fartd/
+
+ExecStart=%h/.fartd/fartd.py
+
+Restart=always
+RestartSec=3
+Environment=PYTHONUNBUFFERED=1
+
+Environment=XDG_RUNTIME_DIR=/run/user/1000
+Environment=PULSE_SERVER=unix:/run/user/1000/pulse/native
+
+[Install]
+WantedBy=multi-user.target

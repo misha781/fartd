@@ -8,7 +8,7 @@ import subprocess
 def main():
     HOST = '0.0.0.0'
     PORT = 3124
-    SOUND_PATH = '/home/misha/.fartd/fart.wav'
+    SOUND_PATH = Path.home() / ".fartd" / "fart.wav"
     
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 

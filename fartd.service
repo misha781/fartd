@@ -3,8 +3,6 @@ Description=Farting fart fart
 After=network.target
 
 [Service]
-User=misha
-Group=misha
 
 WorkingDirectory=%h/.fartd/
 

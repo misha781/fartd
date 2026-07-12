@@ -4,13 +4,14 @@ import time
 import socket
 import sys
 import subprocess
+import os
 from pathlib import Path
 
 
 def main():
     HOST = '0.0.0.0'
     PORT = 3124
-    SOUND_PATH = Path.home() / ".fartd" / "fart.wav"
+    SOUND_PATH = Path.home() / ".fartd" / "temp.wav"
     
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
@@ -30,8 +31,17 @@ def main():
             client_socket, client_address = server_socket.accept()
             print(f"Contact! FIRE!")
             
-            subprocess.run(["paplay", SOUND_PATH])
+            
+            with open(SOUND_PATH, "wb") as f:
+                while True:
+                    data = client_socket.recv(4096)
+                    if not data:
+                        break
+                    f.write(data)
+        
 
+            subprocess.run(["paplay", SOUND_PATH])
+            os.remove(SOUND_PATH)
             client_socket.close()
 
 

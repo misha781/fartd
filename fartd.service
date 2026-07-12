@@ -3,7 +3,7 @@ Description=Farting fart fart
 After=network.target
 
 [Service]
-
+User=REPL_USR
 WorkingDirectory=%h/.fartd/
 
 ExecStart=%h/.fartd/fartd.py

@@ -4,9 +4,9 @@ After=network.target
 
 [Service]
 User=REPL_USR
-WorkingDirectory=%h/.fartd/
+WorkingDirectory=/home/REPL_USR/.fartd/
 
-ExecStart=%h/.fartd/fartd.py
+ExecStart=/home/REPL_USR/.fartd/fartd.py
 
 Restart=always
 RestartSec=3
